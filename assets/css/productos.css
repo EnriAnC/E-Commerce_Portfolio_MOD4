@@ -3,6 +3,7 @@
     --color1: #f3c443;
     --color2: #c7502b;
     --color3: #f3c443;
+    --black-smooth: #1d1c1c;
 }
 *{
     margin: 0;
@@ -25,7 +26,15 @@ body{
 
 .header{
     position: relative;
-    max-width: 100%;
+    max-height: 100%;
+    width: 7rem;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+.header a{
+    text-decoration: none;
+    color: black;
 }
 .header h1{
     position: relative;
@@ -33,39 +42,22 @@ body{
     font-size: 1.5rem;
     text-align: center;
     letter-spacing: .25rem;
-    margin-bottom: 1rem;
 }
-
 /* DRESSES */
 .header h1 span:nth-child(3){
     position: relative;
     top: -.75rem;
 }
 
-.boton-carro{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-/* IR AL CARRO */
-.header #irAlCarro{
-    margin-right: 3vw;
-    background-color: black;
-    color: var(--color2);
-    width: 4rem;
-    padding: 1rem;
-    border-radius: 1.5rem;
-}
-
 .nav-flotante{
     position: fixed;
     z-index: 2000;
     display: flex;
+    width: 48px;
     flex-direction: column;
     padding: 1rem .25rem 1rem 0;
     background-color: rgb(29, 28, 28);
-    row-gap: 1rem;
+    row-gap: .6rem;
     border-radius: 0 1rem 1rem 0;
     box-shadow: 1px 5px 10px 2px rgba(0, 0, 0, 0.589);
     bottom: 35vh;
@@ -104,8 +96,8 @@ body{
     position: absolute;
     z-index: -1;
     right: -1.2rem;
-    bottom: 5rem;
-    background-color: rgb(29, 28, 28);
+    bottom: 4.5rem;
+    background-color: var(--black-smooth);
     border-radius: 0 100%;
     transform: rotateZ(45deg)
 }
@@ -151,10 +143,10 @@ body{
     }
 }
 
-#searchIcon:hover::before{
-    content: "buscar";
+#userIcon:hover::before{
+    content: "Iniciar sesión";
     position: absolute;
-    right: -5.5rem;
+    right: -8.25rem;
     top: 1.5rem;
     background-color: rgb(29, 28, 28);
     color: var(--color1);
@@ -164,8 +156,8 @@ body{
 #homeIcon:hover::before{
     content: "inicio";
     position: absolute;
-    right: -5rem;
-    top: 6rem;
+    right: -5.1rem;
+    top: 5.5rem;
     background-color: rgb(29, 28, 28);
     color: var(--color1);
     padding: .25rem 1rem;
@@ -175,7 +167,7 @@ body{
     content: "Carro de compras";
     position: absolute;
     right: -9.9rem;
-    top: 10rem;
+    top: 9.5rem;
     background-color: rgb(29, 28, 28);
     color: var(--color1);
     padding: .25rem 1rem;
@@ -299,3 +291,4 @@ footer{
         bottom: 10vh;
     }
 }
+

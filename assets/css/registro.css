@@ -8,21 +8,21 @@
 *{
     margin: 0;
     /* font-family: 'Alfa Slab One', cursive; */
-
+    font-family: 'Anton', sans-serif;
     /* font-family: 'Cormorant SC', serif; */
     box-sizing: content-box;
 }
 html{
-    font-family: 'Anton', sans-serif;
-    overflow-x: hidden;
+    position: relative;
     min-height: 100vh;
 }
 body{
-    background-color: var(--color1);
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
+    background-color: var(--color2);
+    min-height: inherit;
+    position: absolute;
+    width: 100%;
 }
+
 
 .header{
     position: relative;
@@ -68,18 +68,7 @@ body{
 .nav-flotante a svg:hover [fill]{
     animation: fill-svg 3s linear forwards;
 }
-.nav-flotante::before{
-    content: "";
-    height: 58px;
-    width: 58px;
-    position: absolute;
-    z-index: -1;
-    right: -1.2rem;
-    bottom: 4.5rem;
-    background-color: var(--black-smooth);
-    border-radius: 0 100%;
-    transform: rotateZ(45deg)
-}
+
 @keyframes fill-svg {
     0%{
         fill: none;
@@ -92,7 +81,7 @@ body{
 .nav-flotante a svg:hover{
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
-    animation: nav-icon 3s linear forwards;
+    animation: nav-icon 2.5s linear forwards;
 }
 
 @keyframes nav-icon {
@@ -100,9 +89,25 @@ body{
         stroke-dashoffset: 0;
     }
 }
-
+.nav-flotante::before{
+    content: "";
+    height: 58px;
+    width: 58px;
+    position: absolute;
+    z-index: -1;
+    right: -1.2rem;
+    bottom: 4.5rem;
+    background-color: var(--black-smooth);
+    border-radius: 0 100%;
+    transform: rotateZ(45deg)
+}
 @media (max-width: 1020px){
-
+    .sidebar-margin{
+        display: block;
+        width: 100%;
+        height: 10vh;
+        background-color: var(--color1);
+    }
     .nav-flotante{
         width: 100%;
         height: 5vh;
@@ -117,6 +122,7 @@ body{
         box-shadow: 1px 5px 10px 2px rgba(0, 0, 0, 0.589);
         bottom: 0;
         left: 0;
+        visibility:visible;
     }
     .nav-flotante::before{
         content: none;
@@ -137,7 +143,6 @@ body{
     }
 }
 
-/* ICONOS HOVER */
 #userIcon:hover::before{
     content: "Iniciar sesión";
     position: absolute;
@@ -190,118 +195,104 @@ body{
     }
 }
 .main{
-    height: auto;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    justify-self: center;
-    padding-top: 2rem;
-}
-
-.main div{
-    margin-bottom: 15vh;
-}
-.main div table{
-    font-family: Arial, Helvetica, sans-serif;
-    min-width: 70vw;
-    padding: 0 0;
-    max-width: 100vw;
-    width: auto;
-    background-color: rgb(253, 227, 153);
-    text-align: center;
-    border-collapse: collapse;
-}
-table .cantidad{
-    display: flex; 
-    justify-content: center;
     align-items: center;
 }
-table .cantidad svg{
-    margin-right: .25rem;
-    background-color: rgb(245, 116, 116);
-    border-radius: 50%;
-    display: none;
-}
 
-.main table tr input{
-    width: 3rem;
-    text-align: center;
-    font-size: 1rem;
-}
-
-
-.main table tr, .main table td, .main table th{
-    vertical-align: center;
-    padding: .5rem .45rem;
-}
-tr,th,td{
-    vertical-align: center;
-}
-@media (max-width: 300px) {
-    .main table tr, .main table td, .main table th{
-        padding: .40rem .1rem;
-    }
-}
-.main div button{
-    height: 2rem;
-    margin-left: 1rem;
-    padding: 0 1rem;
-    font-size: 1.25rem;
-    background-color: black;
-    color: var(--color1);
-}
-.main div button:hover{
-    background-color: var(--color2);
-    color: black;
-    font-style: bold;
-}
-.main div button:active{
-    background-color: black;
-    color: var(--color1);
-}
-table td svg{
-    display: none;
-}
-
-.btn-eliminar svg{
-    display: block;
-    margin-right: .25rem;
-    background-color: rgb(245, 116, 116);
-    border-radius: 50%;
-}
-.btn-eliminar svg:hover{
-    background-color: rgb(211, 35, 35);
-}
-@media (max-width:500px) {
-    .btn-eliminar{
-        display: none;
-    }
-    table td svg{
-        display: block;
-    }
-    .cantidad{
-        flex-direction: column;
-    }
-    table .cantidad{
-        margin-bottom: 0;
-    }
-    table .cantidad svg{
-        display: block;
-        margin-right: 0;
-        margin-bottom: .25rem;
-    }
+footer div:nth-child(1){
+    display: flex;
+    column-gap: 2vw;
 }
 
 footer{
-    min-height: 5vh;
+    background-color: var(--color1);
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
 }
-@media (max-width: 1020px) {
+@media (max-width:1020px) {
     footer{
         bottom: 10vh;
     }
 }
+
+
+
+.contact-form {
+margin-left: auto;
+margin-right: auto;
+width: auto;
+height: auto;
+background-color: var(--color1);
+padding: 1.5rem 2rem;
+}
+.contact-form input {
+padding: 0.5rem;
+display: block;
+width: 92%;
+}
+.contact-form legend,
+.contact-form .contact-form-response {
+font-size: 1.5rem;
+font-weight: bold;
+text-align: center;
+}
+.contact-form input,
+.contact-form textarea {
+font-size: 1rem;
+font-family: sans-serif;
+}
+.contact-form input[type=submit] {
+width: 50%;
+font-weight: bold;
+cursor: pointer;
+margin: 0 auto;
+margin-top: 1rem;
+}
+.contact-form ::placeholder {
+color: black;
+}
+.contact-form [required]:valid {
+border: thin solid #4caf50;
+box-shadow: 0 0 5px 1px #4caf50;
+}
+.contact-form [required]:invalid {
+border: thin solid #f44336;
+box-shadow: 0 0 5px 1px #f44336;
+}
+
+.contact-form-error {
+padding: .25rem;
+margin-top: .25rem;
+font-size: 80%;
+background-color: #f44336;
+color: #fff;
+transition: all 800ms ease;
+}
+
+.none {
+display: none;
+}
+
+.is-active {
+display: block;
+animation: show-message 1s 1 normal 0s ease-out both;
+}
+
+@keyframes show-message {
+0% {
+    visibility: hidden;
+    opacity: 0;
+}
+100% {
+    visibility: visible;
+    opacity: 1;
+}
+}
+.contact-form-loader {
+width: 5rem;
+}
+  

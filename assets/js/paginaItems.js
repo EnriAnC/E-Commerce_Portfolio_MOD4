@@ -1,37 +1,24 @@
-import { obtenerCarroDeComprasLS } from "./add-action.js";
+import CarroDeCompras from "./carro-compras.js";
 
 const d = document;
+let carroDeComprasP = new CarroDeCompras
 
-d.addEventListener("click", e=>{
-    console.log(e)
-    agregarItemACarro(e)
-})
-d.addEventListener("DOMContentLoaded", ()=>{
-    paginaPorItem()
-})
-// window.addEventListener("popstate", ()=>{
-//     if (location.href.endsWith('1')) {
-//         if (confirm('Click OK to go to 2')) {
-//             history.pushState({}, null, `?item=${localStorage.getItem('idItemClickOnHome') - 1}`)
-//         }
-//     }
-// })
 export function paginaPorItem(){
     // Traer datos desde LS
     const $main = document.getElementsByClassName("main")
     console.log($main)
     const itemsListLS= JSON.parse(localStorage.getItem('itemsListStock'))
-    const itemPageReturnLS = localStorage.getItem('idItemClickOnHome')
-    console.log(itemPageReturnLS)
-    console.log(itemsListLS)
+    const itemPageReturnLS = JSON.parse(localStorage.getItem('idItemClickOnHome'))
+    // console.log(itemPageReturnLS)
+    // console.log(itemsListLS)
     const itemsListArrayObject = Object.values(itemsListLS)
-    console.log(itemsListArrayObject)
+    // console.log(itemsListArrayObject)
 
-    // se retorna el número y se le resta 1 para que la primera posicion sea [0]
-    let posicionProducto = itemPageReturnLS - 1
+    // se retorna el id del item y se le resta 1 para que la primera posicion sea [0]
+    let posicionProducto = itemPageReturnLS.at(-1) - 1
     
     // Enlace de página
-    history.pushState(null, "", `?item=${itemPageReturnLS}`);
+    history.pushState(null, "", `?item=${posicionProducto}`);
 
     // Contenido de página
     let div = document.createElement('div');
@@ -45,8 +32,8 @@ export function paginaPorItem(){
             <p id="precio">$${itemsListArrayObject[posicionProducto].precio}</p>
             <div class="opciones">
                 <label for="cantidad">Cantidad</label>
-                <input type="number" name="cantidad" id="cantidad" placeholder="0" min=0>
-                <button>Añadir al carro</button>
+                <input type="number" name="cantidad" id="cantidad" placeholder="1" min=1 max=30>
+                <button class="agregarAlCarro">Añadir al carro</button>
             </div>
         </div>
     </div>
@@ -57,8 +44,13 @@ export function paginaPorItem(){
 export function agregarItemACarro(e){
     if (e.target.innerText == 'Añadir al carro'){
         e.preventDefault()
-        let { i, carroDeCompras } = obtenerCarroDeComprasLS()
-        
+        let { i, carroDeCompras } = carroDeComprasP.obtenerCarroDeComprasLS()
+        let arrayCarroDeCompras = Object.values(carroDeCompras)
+        let cantidad = +e.target.previousElementSibling.value
+        let item = arrayCarroDeCompras.filter(item => item.nombre == e.target.parentNode.parentNode.parentNode.firstElementChild.outerText)
+        if (item.length != 0){
+            cantidad += +item[0].cantidad
+        }
         // console.log(e.target.parentNode.parentNode.parentNode.firstElementChild.id)
         // console.log(e.target.parentNode.parentNode.parentNode.firstElementChild.outerText)
         // console.log(e.target.parentNode.parentNode.firstElementChild.outerText.split('$')[1])
@@ -66,11 +58,13 @@ export function agregarItemACarro(e){
             "id": e.target.parentNode.parentNode.parentNode.firstElementChild.id,
             "nombre": e.target.parentNode.parentNode.parentNode.firstElementChild.outerText,
             "valor": e.target.parentNode.parentNode.firstElementChild.outerText.split('$')[1],
-            "cantidad": Number(e.target.previousElementSibling.value),
+            "cantidad": Number(cantidad)
         }
+        console.log(carroDeCompras[i])
         i++
         console.log(carroDeCompras)
         localStorage.setItem('itemsListCarroDeCompras', JSON.stringify(carroDeCompras))
+        carroDeComprasP.actualizarCarroDeCompras()
     }
 }
 
