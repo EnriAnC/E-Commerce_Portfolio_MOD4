@@ -120,24 +120,24 @@ export default class CarroDeCompras{
         document.addEventListener('click', e=>{
             if (e.target.parentElement.className == 'card'){
                 console.log(e)
-                arrayProductNumber.push(e.target.parentElement.getAttribute('productNumber'))
+                arrayProductNumber.push(e.target.parentElement.getAttribute('productnumber'))
                 localStorage.setItem('idItemClickOnHome', JSON.stringify(arrayProductNumber))
             }
         
             if (e.target.className == 'card'){
-                arrayProductNumber.push(e.target.getAttribute('productNumber'))
+                arrayProductNumber.push(e.target.getAttribute('productnumber'))
                 localStorage.setItem('idItemClickOnHome', JSON.stringify(arrayProductNumber))
             }
         })    
         document.addEventListener('auxclick', e=>{
             if (e.target.parentElement.className == 'card'){
                 console.log(e)
-                arrayProductNumber.push(e.target.parentElement.getAttribute('productNumber'))
+                arrayProductNumber.push(e.target.parentElement.getAttribute('productnumber'))
                 localStorage.setItem('idItemClickOnHome', JSON.stringify(arrayProductNumber))
             }
         
             if (e.target.className == 'card'){
-                arrayProductNumber.push(e.target.getAttribute('productNumber'))
+                arrayProductNumber.push(e.target.getAttribute('productnumber'))
                 localStorage.setItem('idItemClickOnHome', JSON.stringify(arrayProductNumber))
             }
         })  
