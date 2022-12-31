@@ -11,5 +11,7 @@ d.addEventListener('DOMContentLoaded',e=>{
     d.addEventListener('change', e=>{
         carroDeCompras.actualizarCantidadCarroDeCompras(e)
     })
-    
+    d.addEventListener('click',e=>{
+        carroDeCompras.botonEliminar(e)
+    })
 })
