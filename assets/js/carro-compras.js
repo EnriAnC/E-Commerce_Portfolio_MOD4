@@ -110,11 +110,13 @@ export default class CarroDeCompras{
 
     // OBTENER EL ATRIBUTO PRODUCNUMBER DE CADA ITEM AL HACER CLICK SOBRE ÉL Y GUARDAR EN LS
     numberObjectLS(){
-        let arrayProductNumber = JSON.parse(localStorage.getItem('idItemClickOnHome'))
+        let arrayProductNumber = []
+        let idItemLS = arrayProductNumber.push(JSON.parse(localStorage.getItem('idItemClickOnHome')))
         // console.log(arrayProductNumber, 'prod')
-        if (arrayProductNumber == null){
+        if (idItemLS == null){
             arrayProductNumber = []
         }
+        arrayProductNumber.push(idItemLS)
         
 
         document.addEventListener('click', e=>{
