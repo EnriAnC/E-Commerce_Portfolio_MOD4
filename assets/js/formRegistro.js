@@ -36,7 +36,6 @@ export function formRegistro(){
             <p>Los datos han sido enviados</p>
         </div>
     </form>
-</section>
     `
     contactFormValidations()
 }
