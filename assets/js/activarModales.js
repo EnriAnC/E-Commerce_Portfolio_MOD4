@@ -38,7 +38,7 @@ export default class Modal{
         const estilos = document.styleSheets[0];
         // console.log(estilos)
         const cssCarroCompras = `
-        .closeModal{
+                .closeModal{
             font-family: Arial;
             font-size: 2rem;
             border-style:groove;
@@ -60,42 +60,31 @@ export default class Modal{
         }/
         .ventana-modal{
             display: flex;
-            width: 60%;
-            height: 50%;
+            width: 40%;
+            height: 40%;
+            max-height: 340px;
             position: fixed;
             margin: 0 auto;
-            top: 5vh;
             bottom: 0;
-            left: 0;
+            left: -60vw;
             right: 0;
             z-index: 1000;
             background-color: rgba(0, 0, 0, 0.315);
             justify-content: center;
-            transform: scale(0);
+            transform: translate(0,50vw);
             transition: all 0.5s;
             border-radius: 10px;
         }/
-        @media (max-width: 1020px) {
-            .ventana-modal{
-                top: calc(30vh + 10%);
-                height: 50%;
-                transform: translate(0,100vh);
-                
-            }
-            .active{
-                transform: translate(0,0);
         
-            }
-        }/
         .active{
-            transform: scale(1);
+            transform: translate(0,0);
         }/
         .carro-modal{
             border: #c7502b;
             display: flex;
-            padding-left: 1rem;
+            padding-left: .5rem;
             height: 100%;
-            min-width: 60vw;
+            min-width: 40vw;
             justify-content: center;
             align-items: flex-start;
             justify-self: center;
@@ -116,7 +105,7 @@ export default class Modal{
             background-color: var(--black-smooth);
         }/
         .carro-modal div table{
-            min-width: 50vw;
+            min-width: 35vw;
             padding: 0 0;
             border-radius: 4px 4px 0 0;
             max-width: 100vw;
@@ -126,14 +115,39 @@ export default class Modal{
             border-collapse: collapse;
             font-family: Arial, Helvetica, sans-serif;
         }/
+        @media (max-width: 1020px) {
+            .ventana-modal{
+                max-height: 100vh;
+                left: 60vw;
+                top: calc(30vh + 20%);
+                height: 40%;
+                transform: translate(0,100vh);
+                
+            }
+            .carro-modal{
+                padding-left: .5rem;
+            }
+            .active{
+                transform: translate(0,0);
+        
+            }
+        }/
+        @media (max-width:670px) {
+            .ventana-modal{
+                width: 60vw;
+                left: 40vw;
+            }
+        }/
         @media (max-width:520px) {
             .ventana-modal{
-                top: 30vh;
+                top: calc(30vh + 10%);
                 width: 100%;
-                height: 60%;
+                height: 50%;
+                left:0; 
             }
             .carro-modal{
                 width: 100%;
+                padding-left: 1rem;
             }
             .carro-modal div table{
                 min-width: 90vw;
@@ -229,6 +243,11 @@ export default class Modal{
                 margin-right: 0;
                 margin-bottom: .25rem;
             }
+        }/
+        .item a{
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
         }
         `
         
