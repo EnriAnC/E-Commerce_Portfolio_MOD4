@@ -35,14 +35,17 @@ export default class CarroDeCompras{
             <th></th>
         </tr>
         `
-        
+        let href = './pages/productos/productos.html'
+        if (location.pathname.match('pages')){
+            href = `../../pages/productos/productos.html`
+        }
         let fragment = d.createDocumentFragment()
         let totalAPagar = 0
         if (newArrayCarroDeCompras.length != 0){
             for (let i=0; i < newArrayCarroDeCompras.length; i++){
                 let tr = d.createElement("tr")
                 tr.innerHTML = `
-                <td class="item">${newArrayCarroDeCompras[i].nombre}</td>
+                <td class="item"><a href='${href}'>${newArrayCarroDeCompras[i].nombre}</a></td>
                 <td class="valor">$${newArrayCarroDeCompras[i].valor}</td>
                 <td class="btn-eliminar cantidad" ><svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ><path fill-rule="evenodd" d="M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z"/></svg><input type="number" value="${+newArrayCarroDeCompras[i].cantidad}" class="inputCantidad" min=0></td>   
                 <td class="subtotal">$${+newArrayCarroDeCompras[i].cantidad*+newArrayCarroDeCompras[i].valor}</td>
@@ -253,8 +256,6 @@ export default class CarroDeCompras{
 
 
     stockInLS(){
- 
-    
         localStorage.setItem('itemsListStock', JSON.stringify(this.items))
         return this.items
     }        
