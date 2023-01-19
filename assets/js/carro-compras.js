@@ -110,6 +110,10 @@ export default class CarroDeCompras{
 
     // OBTENER EL ATRIBUTO PRODUCNUMBER DE CADA ITEM AL HACER CLICK SOBRE ÉL Y GUARDAR EN LS
     numberObjectLS(){
+        let getCarroDeComprasLS = JSON.parse(localStorage.getItem('itemsListStock'))
+        let arrayCarroDeComprasLS = Object.values(getCarroDeComprasLS)
+        console.log(arrayCarroDeComprasLS)
+
         let arrayProductNumber = []
         let idItemLS = arrayProductNumber.push(JSON.parse(localStorage.getItem('idItemClickOnHome')))
         // console.log(arrayProductNumber, 'prod')
@@ -118,8 +122,15 @@ export default class CarroDeCompras{
         }
         arrayProductNumber.push(idItemLS)
         
-
+        
         document.addEventListener('click', e=>{
+            
+            if (e.target.parentElement.className == 'item'){
+                // console.log(arrayProductNumber.push(indexx[0].id.split('00')[1]))
+                let indexx = arrayCarroDeComprasLS.filter(el=> el.nombre == e.target.textContent)
+                arrayProductNumber.push(+indexx[0].id.split('00')[1])
+                localStorage.setItem('idItemClickOnHome', JSON.stringify(arrayProductNumber))
+            }
             if (e.target.parentElement.className == 'card'){
                 console.log(e)
                 arrayProductNumber.push(e.target.parentElement.getAttribute('productnumber'))
@@ -132,6 +143,12 @@ export default class CarroDeCompras{
             }
         })    
         document.addEventListener('auxclick', e=>{
+            if (e.target.parentElement.className == 'item'){
+                // console.log(arrayProductNumber.push(indexx[0].id.split('00')[1]))
+                let indexx = arrayCarroDeComprasLS.filter(el=> el.nombre == e.target.textContent)
+                arrayProductNumber.push(+indexx[0].id.split('00')[1])
+                localStorage.setItem('idItemClickOnHome', JSON.stringify(arrayProductNumber))
+            }
             if (e.target.parentElement.className == 'card'){
                 console.log(e)
                 arrayProductNumber.push(e.target.parentElement.getAttribute('productnumber'))
@@ -144,6 +161,7 @@ export default class CarroDeCompras{
             }
         })  
     }
+
 
 
     botonEliminar(e){
