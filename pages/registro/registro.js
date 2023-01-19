@@ -10,6 +10,7 @@ d.addEventListener('DOMContentLoaded', ()=>{
     modal.modalCarroCompras()
     modal.modalInicioSesion()
 
+    carroDecompras.numberObjectLS()
     carroDecompras.actualizarCarroDeCompras();
 
     document.addEventListener("click", (e)=>{
