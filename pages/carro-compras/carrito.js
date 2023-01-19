@@ -7,6 +7,9 @@ d.addEventListener('DOMContentLoaded',e=>{
     const carroDeCompras = new CarroDeCompras;
     const modal = new Modal;
     modal.modalInicioSesion();
+    
+    carroDeCompras.numberObjectLS()
+    
     carroDeCompras.actualizarCarroDeCompras();
     d.addEventListener('change', e=>{
         carroDeCompras.actualizarCantidadCarroDeCompras(e)
