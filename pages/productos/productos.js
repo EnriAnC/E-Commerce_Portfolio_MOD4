@@ -11,6 +11,7 @@ d.addEventListener("DOMContentLoaded", ()=>{
     modal.modalInicioSesion()
     modal.modalCarroCompras()
     
+    carroDecompras.numberObjectLS()
     carroDecompras.actualizarCarroDeCompras();
 
     document.addEventListener("click", (e)=>{
@@ -18,8 +19,4 @@ d.addEventListener("DOMContentLoaded", ()=>{
         carroDecompras.actualizarCantidadCarroDeCompras(e)
         agregarItemACarro(e)
     })
-
-    // document.addEventListener("change", e=>{
-    //     carroDecompras.actualizarCantidadCarroDeCompras(e)
-    // })
 })
